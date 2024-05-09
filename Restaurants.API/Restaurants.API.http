@@ -1,11 +1,5 @@
 ### request 1
 @host = http://localhost
 @port = 5062
-POST {{host}}:{{port}}/weatherforecast/generate?numberOfResult=10
-Content-Type: application/json
-
-{
-    "min": -10,
-    "max": 20
-}
+GET {{host}}:{{port}}/api/restaurants
 ###

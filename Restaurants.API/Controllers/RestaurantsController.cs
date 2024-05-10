@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Restaurants.Application.Restaurants;
+using Restaurants.Domain.Entities;
 
 namespace Restaurants.API.Controllers;
 
@@ -12,5 +13,16 @@ public class RestaurantsController(IRestaurantsService _restaurantsService) : Co
     {
         var restaurants = await _restaurantsService.GetAllRestaurants();
         return Ok(restaurants);
+    }
+
+    [HttpGet("{restaurantId}")]
+    public async Task<IActionResult> GetById(int restaurantId)
+    {
+        var restaurant = await _restaurantsService.GetRestaurantById(restaurantId);
+        if (restaurant == null)
+        {
+            return NotFound($"Restaurant with id: {restaurantId} doesn't exist.");
+        }
+        return Ok(restaurant);
     }
 }

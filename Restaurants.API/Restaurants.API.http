@@ -3,3 +3,15 @@
 @port = 5062
 GET {{host}}:{{port}}/api/restaurants
 ###
+
+### request 2 - restaurant exist
+@host = http://localhost
+@port = 5062
+GET {{host}}:{{port}}/api/restaurants/1
+###
+
+### request 2 - restaurant not exist
+@host = http://localhost
+@port = 5062
+GET {{host}}:{{port}}/api/restaurants/5000
+###

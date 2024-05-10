@@ -1,6 +1,7 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Restaurants.Application.Restaurants;
-using Restaurants.Domain.Entities;
+using Restaurants.Application.Restaurants.Dtos;
 
 namespace Restaurants.API.Controllers;
 
@@ -24,5 +25,14 @@ public class RestaurantsController(IRestaurantsService _restaurantsService) : Co
             return NotFound($"Restaurant with id: {restaurantId} doesn't exist.");
         }
         return Ok(restaurant);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateRestaurant(
+        [FromBody] CreateRestaurantDto createRestaurantDto
+    )
+    {
+        int id = await _restaurantsService.CreateRestaurant(createRestaurantDto);
+        return CreatedAtAction(nameof(GetById), new { restaurantId = id }, null);
     }
 }

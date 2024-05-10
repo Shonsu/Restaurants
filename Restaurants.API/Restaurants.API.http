@@ -5,13 +5,27 @@ GET {{host}}:{{port}}/api/restaurants
 ###
 
 ### request 2 - restaurant exist
-@host = http://localhost
-@port = 5062
 GET {{host}}:{{port}}/api/restaurants/1
 ###
 
-### request 2 - restaurant not exist
-@host = http://localhost
-@port = 5062
+### request 3 - restaurant not exist
 GET {{host}}:{{port}}/api/restaurants/5000
 ###
+
+### request 4 - create new restaurant
+POST {{host}}:{{port}}/api/restaurants
+Content-Type: application/json
+
+{
+    "Name": "Spicy Delights",
+    "Description": "A culinary experience like no other",
+    "Category": "Fine Dinning",
+    "HasDelivery": true,
+    "ContactEmail": "info@fgourmetdelights.com",
+    "ContactNumber": "123-123-321",
+    "City": "Metropolis",
+    "Street": "456 Gourmet Avenue",
+    "PostalCode": "54321"
+}
+###
+GET {{host}}:{{port}}/api/restaurants/1002

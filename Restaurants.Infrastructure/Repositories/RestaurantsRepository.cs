@@ -15,6 +15,7 @@ internal class RestaurantsRepository(RestaurantsDBContext dbContext) : IRestaura
     {
         return await dbContext
             .Restaurants.AsNoTracking()
+            .Include(r => r.Dishes)
             .FirstOrDefaultAsync(r => r.Id == restaurantId);
     }
 

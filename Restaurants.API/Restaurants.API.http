@@ -29,3 +29,19 @@ Content-Type: application/json
 }
 ###
 GET {{host}}:{{port}}/api/restaurants/1002
+
+### request body validation
+POST {{host}}:{{port}}/api/restaurants
+Content-Type: application/json
+
+{
+    "Name": "Tasty Bites",
+    "Description": "A cozy restaurant serving various sea dishes",
+    "Category": "International Cuisine",
+    "HasDelivery": true,
+    "ContactEmail": "tastybites@intern.com",
+    "ContactNumber": "456-654-456",
+    "PostalCode": "33-111",
+    "City": "New Yourk",
+    "Street": "123 Main Street"
+}

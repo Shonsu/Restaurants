@@ -32,6 +32,9 @@ public class RestaurantsController(IRestaurantsService _restaurantsService) : Co
         [FromBody] CreateRestaurantDto createRestaurantDto
     )
     {
+        // if(!ModelState.IsValid){
+        //     return BadRequest(ModelState);
+        // }
         int id = await _restaurantsService.CreateRestaurant(createRestaurantDto);
         return CreatedAtAction(nameof(GetById), new { restaurantId = id }, null);
     }

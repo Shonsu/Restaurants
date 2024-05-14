@@ -35,15 +35,15 @@ POST {{host}}:{{port}}/api/restaurants
 Content-Type: application/json
 
 {
-    "Name": "Tasty Bites",
-    "Description": "A cozy restaurant serving various sea dishes",
-    "Category": "International Cuisine",
+    "Name": "HardRock Cafee",
+    "Description": "A metal dishes served by goth girl, on fire plates",
+    "Category": "Indian",
     "HasDelivery": true,
-    "ContactEmail": "tastybites@intern.com",
-    "ContactNumber": "456-654-456",
-    "PostalCode": "33-111",
-    "City": "New Yourk",
-    "Street": "123 Main Street"
+    "ContactEmail": "hardrock@inferno.com",
+    "ContactNumber": "66-456-654-456",
+    "PostalCode": "11-111",
+    "City": "Warszaw",
+    "Street": "Metalowa 11"
 }
 
 ### request body validation

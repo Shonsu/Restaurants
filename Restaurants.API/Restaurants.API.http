@@ -61,3 +61,6 @@ Content-Type: application/json
     "City": "New Yourk",
     "Street": "123 Main Street"
 }
+
+### delete restaurant 
+DELETE  {{host}}:{{port}}/api/restaurants/2002

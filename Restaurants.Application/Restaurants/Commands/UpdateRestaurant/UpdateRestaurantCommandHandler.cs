@@ -22,13 +22,18 @@ public class UpdateRestaurantCommandHandler(
         {
             return false;
         }
-        restaurant = mapper.Map(request, restaurant);
+
+        mapper.Map(request,restaurant);
         // restaurant.Name = request.Name;
         // restaurant.Description = request.Description;
         // restaurant.HasDelivery = request.HasDelivery;
         await _restaurantsRepository.SaveChangesAsync();
 
-        logger.LogInformation($"Update restaurant with id: {request.Id}.");
+        logger.LogInformation(
+            "Update restaurant with id: {RestaurantId} with {@UpdateRestaurant}",
+            request.Id,
+            request
+        );
         return true;
     }
 }

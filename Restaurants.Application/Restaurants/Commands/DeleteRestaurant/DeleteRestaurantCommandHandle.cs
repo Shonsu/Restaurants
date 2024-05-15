@@ -14,7 +14,11 @@ public class DeleteRestaurantCommandHandle(
         CancellationToken cancellationToken
     )
     {
-        logger.LogInformation($"Deleting restaurant with id: {request.Id}");
+        logger.LogInformation(
+            "Deleting restaurant with id: {RestaurantId} with {@UpdasteRestaurant}",
+            request.Id,
+            request
+        );
         var restaurant = await _restaurantsRepository.GetByIdAsync(request.Id);
         if (restaurant is null)
         {

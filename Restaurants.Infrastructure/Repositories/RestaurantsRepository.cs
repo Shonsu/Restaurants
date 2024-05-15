@@ -27,7 +27,7 @@ internal class RestaurantsRepository(RestaurantsDBContext dbContext) : IRestaura
     public async Task<Restaurant?> GetByIdAsync(int restaurantId)
     {
         return await dbContext
-            .Restaurants.AsNoTracking()
+            .Restaurants//.AsNoTracking()
             .Include(r => r.Dishes)
             .FirstOrDefaultAsync(r => r.Id == restaurantId);
     }
@@ -37,7 +37,7 @@ internal class RestaurantsRepository(RestaurantsDBContext dbContext) : IRestaura
         return await dbContext.Restaurants.AnyAsync(r => r.Id == restaurantId);
     }
 
-    public Task SaveChangesAsync() => dbContext.SaveChangesAsync();
+    public async Task SaveChangesAsync() => await dbContext.SaveChangesAsync();
 
     public async Task<bool> UpdateRestaurantAsync(int id, Object restaurant)
     {

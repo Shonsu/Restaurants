@@ -5,7 +5,7 @@ GET {{host}}:{{port}}/api/restaurants
 ###
 
 ### request 2 - restaurant exist
-GET {{host}}:{{port}}/api/restaurants/1
+GET {{host}}:{{port}}/api/restaurants/4002
 ###
 
 ### request 3 - restaurant not exist
@@ -17,15 +17,15 @@ POST {{host}}:{{port}}/api/restaurants
 Content-Type: application/json
 
 {
-    "Name": "Sp",
+    "Name": "Bar Lan Ankh",
     "Description": "A culinary experience like no other",
-    "Category": "Fine Dinning",
+    "Category": "Asian",
     "HasDelivery": true,
     "ContactEmail": "info@fgourmetdelights.com",
-    "ContactNumber": "123-123-321",
-    "City": "Metropolis",
-    "Street": "456 Gourmet Avenue",
-    "PostalCode": "54321"
+    "ContactNumber": "48-123-123-321",
+    "City": "Otwock",
+    "Street": "Kupiecka",
+    "PostalCode": "05-400"
 }
 ###
 GET {{host}}:{{port}}/api/restaurants/1002
@@ -66,11 +66,11 @@ Content-Type: application/json
 DELETE  {{host}}:{{port}}/api/restaurants/2002
 
 ### update restaurant
-PATCH  {{host}}:{{port}}/api/restaurants/3009
+PATCH  {{host}}:{{port}}/api/restaurants/4002
 Content-Type: application/json
 
 {
-    "Name": "HardRock2",
-    "Description": "A metal dishes served by goth girl, on fire plates",
-    "HasDelivery": true
+  "Name": "Bar Lan Ankh",
+  "Description": "Spicy dishes of hot dogs",
+  "HasDelivery": true
 }

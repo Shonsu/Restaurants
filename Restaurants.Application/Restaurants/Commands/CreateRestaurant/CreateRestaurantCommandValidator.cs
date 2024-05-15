@@ -10,7 +10,8 @@ public class CreateRestaurantCommandValidator : AbstractValidator<CreateRestaura
         "Mexican",
         "Japanese",
         "American",
-        "Indian"
+        "Indian",
+        "Asian"
     ];
 
     public CreateRestaurantCommandValidator()

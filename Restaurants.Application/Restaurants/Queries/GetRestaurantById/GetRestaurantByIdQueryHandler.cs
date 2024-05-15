@@ -17,7 +17,7 @@ public class GetRestaurantByIdQueryHandler(
         CancellationToken cancellationToken
     )
     {
-        logger.LogInformation($"Get restaurant with id: {request.Id}");
+        logger.LogInformation("Get restaurant with id: {RestaurantId}", request.Id);
         var restaurant = await _restaurantsRepository.GetByIdAsync(request.Id);
         //return RestaurantDto.FromEntity(restaurant);
         var restaurantDto = mapper.Map<RestaurantDto?>(restaurant);

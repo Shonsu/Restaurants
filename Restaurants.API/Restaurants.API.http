@@ -17,7 +17,7 @@ POST {{host}}:{{port}}/api/restaurants
 Content-Type: application/json
 
 {
-    "Name": "Spicy Delights",
+    "Name": "Sp",
     "Description": "A culinary experience like no other",
     "Category": "Fine Dinning",
     "HasDelivery": true,
@@ -64,3 +64,13 @@ Content-Type: application/json
 
 ### delete restaurant 
 DELETE  {{host}}:{{port}}/api/restaurants/2002
+
+### update restaurant
+PATCH  {{host}}:{{port}}/api/restaurants/3009
+Content-Type: application/json
+
+{
+    "Name": "HardRock2",
+    "Description": "A metal dishes served by goth girl, on fire plates",
+    "HasDelivery": true
+}

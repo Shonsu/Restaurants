@@ -15,7 +15,6 @@ internal class RestaurantsRepository(RestaurantsDBContext dbContext) : IRestaura
 
     public async Task DeleteRestaurantAsync(Restaurant restaurant)
     {
-        
         dbContext.Restaurants.Remove(restaurant);
         await dbContext.SaveChangesAsync();
     }
@@ -36,5 +35,21 @@ internal class RestaurantsRepository(RestaurantsDBContext dbContext) : IRestaura
     public async Task<bool> RestaurantExistAsync(int restaurantId)
     {
         return await dbContext.Restaurants.AnyAsync(r => r.Id == restaurantId);
+    }
+
+    public Task SaveChangesAsync() => dbContext.SaveChangesAsync();
+
+    public async Task<bool> UpdateRestaurantAsync(int id, Object restaurant)
+    {
+        Restaurant? restaurantToUpdate = await dbContext.Restaurants.FirstOrDefaultAsync(r =>
+            r.Id == id
+        );
+        if (restaurantToUpdate == null)
+        {
+            return false;
+        }
+        dbContext.Entry(restaurantToUpdate).CurrentValues.SetValues(restaurant);
+        await dbContext.SaveChangesAsync();
+        return true;
     }
 }

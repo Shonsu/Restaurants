@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.1" />
     <ProjectReference Include="../Restaurants.Application/Restaurants.Application.csproj" />
     <ProjectReference Include="..\Restaurants.Infrastructure\Restaurants.Infrastructure.csproj" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.4">

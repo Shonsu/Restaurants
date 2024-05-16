@@ -1,3 +1,4 @@
+using Restaurants.API;
 using Restaurants.API.Middlewares;
 using Restaurants.Application.Extensions;
 using Restaurants.Infrastructure.Extensions;
@@ -12,6 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
+builder.Services.AddScoped<RequestTimeLoggingMiddleware>();
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
@@ -28,6 +30,7 @@ if (seeder != null)
 }
 
 // Configure the HTTP request pipeline.
+app.UseMiddleware<RequestTimeLoggingMiddleware>();
 app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.UseSerilogRequestLogging();

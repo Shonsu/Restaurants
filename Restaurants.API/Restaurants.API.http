@@ -5,7 +5,7 @@ GET {{host}}:{{port}}/api/restaurants
 ###
 
 ### request 2 - restaurant exist
-GET {{host}}:{{port}}/api/restaurants/4002
+GET {{host}}:{{port}}/api/restaurants/1002
 ###
 
 ### request 3 - restaurant not exist
@@ -73,4 +73,14 @@ Content-Type: application/json
   "Name": "Bar Lan Ankh",
   "Description": "Spicy dishes of hot dogs",
   "HasDelivery": true
+}
+###
+POST  {{host}}:{{port}}/api/restaurants/1002/dishes
+Content-Type: application/json
+
+{
+    "Name": "Spaghetti Bolognese",
+    "Description": "Classic Italian pasta dish with rich meat sauce",
+    "Price": 29,
+    "KiloCalories": 1000
 }

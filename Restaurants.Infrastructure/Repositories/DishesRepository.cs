@@ -12,4 +12,12 @@ internal class DishesRepository(RestaurantsDBContext dbContext) : IDishesReposit
         await dbContext.SaveChangesAsync();
         return dish.Id;
     }
+
+    // public async Task<IEnumerable<Dish>> GetDishesForRestaurantAsync(int restaurantId)
+    // {
+    //     List<Dish> dishes = await dbContext
+    //         .Dishes.Where(d => d.RestaurantId == restaurantId)
+    //         .ToListAsync();
+    //     return dishes;
+    // }
 }

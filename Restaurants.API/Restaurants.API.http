@@ -74,7 +74,8 @@ Content-Type: application/json
   "Description": "Spicy dishes of hot dogs",
   "HasDelivery": true
 }
-###
+
+### create dish for a given restaurant
 POST  {{host}}:{{port}}/api/restaurants/1002/dishes
 Content-Type: application/json
 
@@ -84,3 +85,11 @@ Content-Type: application/json
     "Price": 29,
     "KiloCalories": 1000
 }
+
+### retrieve all dishes for a given restaurant
+GET  {{host}}:{{port}}/api/restaurants/1002/dishes
+
+### retrieve specific dish for a given restaurant
+GET  {{host}}:{{port}}/api/restaurants/1002/dishes/1004
+
+###

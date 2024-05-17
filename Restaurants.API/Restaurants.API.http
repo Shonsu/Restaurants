@@ -80,7 +80,7 @@ POST  {{host}}:{{port}}/api/restaurants/1002/dishes
 Content-Type: application/json
 
 {
-    "Name": "Spaghetti Bolognese",
+    "Name": "Spaghetti Bolognese9",
     "Description": "Classic Italian pasta dish with rich meat sauce",
     "Price": 29,
     "KiloCalories": 1000
@@ -93,3 +93,5 @@ GET  {{host}}:{{port}}/api/restaurants/1002/dishes
 GET  {{host}}:{{port}}/api/restaurants/1002/dishes/1004
 
 ###
+### delete dishes for a given restaurant
+DELETE  {{host}}:{{port}}/api/restaurants/1002/dishes

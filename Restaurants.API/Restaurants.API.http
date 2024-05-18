@@ -1,11 +1,15 @@
 ### request 1
 @host = http://localhost
 @port = 5062
+@token = CfDJ8JLO8A5qCt5FqlwROFPzDJPI_zz_GV10nRKLssidux2sy69UWag-PkfnqmYdujNdhWuk64zJTQJnxat-rBN8QKoiZ75e2DYX3rJEY0qF5WKml1WUT498dDguQwqwKPaXOuPUf_MP9ZKLcLQ_q8NOzI7TT5f-m9hWbiM8mPmS_v92NvRzLneWDQd_wVe9Z7V8MQ9Q0_FTIQ2B9VssQv1JEv1si2N1JH1e3sFnDUtaNwJxg47anbfaknl8VgTra5K3yWMJUXpf2OBqFvmr_PbAzVQbj5fCqGn7TSKV6HFDzd7_TAmeb_cSl-7x3AoOaNoecVpOSKEGnqVHmrBq0Phdgm_C5MQzz3xw6r_zN_s4O8x6fFgT_K0T2jiXQlYudeg8knpiEZrCnKkCd64YBGApIU8wuQRVH8bW9FkRFHexoNWWEDonRV9fIt2xWCwV-xR6DD3g9KIvLREPH5-CdvqI-2G4Ck5SBhy22xN7h25huVs-RIhDQUNq71PVRFl3RlUwWUpQkXgkPIZdrTkcnlb-hibb_8fX8hqvgiMIq0ez9UOCqivGe2CJj6L7dedglwq5BKmigSl_nezAakxfQAogApn2r-JKMR3OzaVpZWdZc1bStQ_BveAvVYwr0X6GlOW0W6_BY89vpVNVJIwqdNDp5BtH1jq37Bil1ad5IUnmC89q028N5Ml5eNjdtOvq19mGSA
+
 GET {{host}}:{{port}}/api/restaurants
+#Authorization: Bearer {{token}}
 ###
 
 ### request 2 - restaurant exist
 GET {{host}}:{{port}}/api/restaurants/1002
+Authorization: Bearer {{token}}
 ###
 
 ### request 3 - restaurant not exist
@@ -97,7 +101,7 @@ GET  {{host}}:{{port}}/api/restaurants/1002/dishes/1004
 DELETE  {{host}}:{{port}}/api/restaurants/1002/dishes
 
 ### register user
-POST {{host}}:{{port}}/register
+POST {{host}}:{{port}}/api/identity/register
 Content-Type: application/json
 
 {
@@ -106,7 +110,7 @@ Content-Type: application/json
 }
 
 ### login user
-POST {{host}}:{{port}}/login
+POST {{host}}:{{port}}/api/identity/login
 Content-Type: application/json
 
 {

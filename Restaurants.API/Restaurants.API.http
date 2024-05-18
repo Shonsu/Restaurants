@@ -80,7 +80,7 @@ POST  {{host}}:{{port}}/api/restaurants/1002/dishes
 Content-Type: application/json
 
 {
-    "Name": "Spaghetti Bolognese9",
+    "Name": "Spaghetti Bolognese912",
     "Description": "Classic Italian pasta dish with rich meat sauce",
     "Price": 29,
     "KiloCalories": 1000

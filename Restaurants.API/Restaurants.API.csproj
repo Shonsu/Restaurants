@@ -6,7 +6,7 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.1" />
     <ProjectReference Include="../Restaurants.Application/Restaurants.Application.csproj" />
     <ProjectReference Include="..\Restaurants.Infrastructure\Restaurants.Infrastructure.csproj" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.4">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

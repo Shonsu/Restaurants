@@ -95,3 +95,23 @@ GET  {{host}}:{{port}}/api/restaurants/1002/dishes/1004
 ###
 ### delete dishes for a given restaurant
 DELETE  {{host}}:{{port}}/api/restaurants/1002/dishes
+
+### register user
+POST {{host}}:{{port}}/register
+Content-Type: application/json
+
+{
+    "email": "testuser@test.com",
+    "password": "Password.12"
+}
+
+### login user
+POST {{host}}:{{port}}/login
+Content-Type: application/json
+
+{
+    "email": "testuser@test.com",
+    "password": "Password.12"
+}
+
+### 

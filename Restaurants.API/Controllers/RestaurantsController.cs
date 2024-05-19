@@ -7,6 +7,7 @@ using Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
 using Restaurants.Application.Restaurants.Dtos;
 using Restaurants.Application.Restaurants.Queries.GetAllRestaurants;
 using Restaurants.Application.Restaurants.Queries.GetRestaurantById;
+using Restaurants.Domain.Constans;
 
 namespace Restaurants.API.Controllers;
 
@@ -33,10 +34,14 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = UserRoles.Owner)]
     public async Task<IActionResult> CreateRestaurant(
         [FromBody] CreateRestaurantCommand createRestaurantCommand
     )
     {
+        // if(!User.IsInRole("Owner")){
+        //     return Unauthorized();
+        // }
         // if(!ModelState.IsValid){
         //     return BadRequest(ModelState);
         // }

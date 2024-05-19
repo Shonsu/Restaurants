@@ -2,7 +2,7 @@
 @host = http://localhost
 @port = 5062
 @token = CfDJ8JLO8A5qCt5FqlwROFPzDJPpVvHnpGCw5_WFG8ijT1wbZ-Vyie9YRnWYmilEnM71HfpNZzHx7B7uwHla8-zlsd-EQ_cU9MoMLfYGTnLAPkrqmKgI-naPfEhoMYXofoZw9fnnDCHTnSovkVYuIRpfDma2Vo7dgo6DK8oD0pFuZpFHhX6sI1fynqJtjdCDh5JOQm3iL33yD8HeKDDuIpIkoxWziUvv8Gw0uQhQAqM3RP9LYmXG7zzXxncsIf6lDakuVM1j6H0Upph5PNVJlmUXgIlJvIK1xGnTMCR4kNmCcY4CoDvd85SRgA6BEQ4cAFIuTuTzmJ8UI-QgCku2yVNr7IAPqB6trDsZJ8gWmFxF-avfFNEYX86JGY9Ho5iYvwqb0qigViGmRXhi8UyfDER-aV3KNDaCdt3FfB3N18EK79zzKjlHPvfkEf47xHzeWDVqAQ01-Aeb9XtVzAdYXD0MTK343v3m5Dre9DVCHqUBCt8CxTfjj1SfeDmAW4hG68n53HWe58lhpzCmKsbhgnZgDaey_pWhQ0ANOtNFWrJNngQpWd60DBcO9bRys3Rt7PP1EE2JU9gKiFEMC68EI1I-ytSnXZKp0z5VV4KEdrOTHPao_Ftnz_bFrYMcPZcgu48hvQtZD8lRP58QMN8h6S7sag9oEzfoVPi9I4ZpBcfYPiuVqbVbAXbMeGSlniasW3Ejhg
-
+@ownerToken = CfDJ8JLO8A5qCt5FqlwROFPzDJPdXJo7r1zYR_iuVLRH4OfcoRRZVXnwgoWq3ZVlUpXjmjARzbJoRuOZnx_SQ-uYPg9rFXrdvn1Zxs6XX_9z6HXdFzFMAXYisgrSEIEjH7K1hWDj0LbUUgQY_TuWteVJ2s1GpIMjFV-3RvxJfSajM46i5K9tvGtOcJhLQXa0aG-S8GAX-bkgwCacpM7flUp1-c3ZRj67DKHdxUV8uW5NK142pwOkReXLp0EUHAHk5oGoBxPsITuXVPvA_lI1yX2k-8R3jo09QiIFTU5eABk5SNMBYJj2jgCoYMfLunULXPbdDKxGMJYs55nwGxoQ-bjhtr93Aunyyw9srjbnFRhaaN36p6REme0hb30rzdeeuV5Yuj4jlnQmw2XqOS8JH8WEUft_ApxxjRwH-wL58cNQnDL2I9VkSiqgiGLmLzw0NY19j1ZPswunzccwHPUBGsg1CSEo4SNgW_88ly6DHRlU5BoCpjM9TT10f-d9Z8CRZs8yxCK67qb9cVGL6NaYMXjvMaNUBzmtjudT1eG6Yd5C8u9PdFbt7hlNc4MYyerwTsYmigWji5Csza2bbl_m3fY8bTsKE0gE2uAWw3Gz80Dv_mkaCwKItEqCAKCYQJiBiaVx15DYsAuVqJPqTT9YE6xNFgQAIuecYlLxL6MliNnW7_fXYR7VbMyXCAMYU8nUuCBWSh_ehVZGVVmIiBs3nWefCnRRhwfivx6GDmOwNPZi-sCtA_rqD3617N6JukS5JVVJcwHddqCySVWicmCQjuCIyXyZcYZxttEVPdDn2nb6LlWw
 GET {{host}}:{{port}}/api/restaurants
 #Authorization: Bearer {{token}}
 ###
@@ -53,15 +53,16 @@ Content-Type: application/json
 ### request body validation
 POST {{host}}:{{port}}/api/restaurants
 Content-Type: application/json
+Authorization: Bearer {{ownerToken}}
 
 {
-    "Name": "Tasty Bites",
+    "Name": "Tasty Bites2!!!!!",
     "Description": "A cozy restaurant serving various sea dishes",
-    "Category": "International Cuisine",
+    "Category": "Asian",
     "HasDelivery": true,
-    "ContactEmail": "tastybites",
-    "ContactNumber": "456-654-456",
-    "PostalCode": "323-111",
+    "ContactEmail": "tastybites@asd.com",
+    "ContactNumber": "45-456-654-456",
+    "PostalCode": "32-111",
     "City": "New Yourk",
     "Street": "123 Main Street"
 }
@@ -114,7 +115,7 @@ POST {{host}}:{{port}}/api/identity/login
 Content-Type: application/json
 
 {
-    "email": "testuser@test.com",
+    "email": "owner@test.com",
     "password": "Password.12"
 }
 
@@ -126,4 +127,13 @@ Authorization: Bearer {{token}}
 {
     "dateofbirth": "1990-01-22",
     "nationality": "Polish"
+}
+
+### register admin user
+POST {{host}}:{{port}}/api/identity/register
+Content-Type: application/json
+
+{
+    "email": "user@test.com",
+    "password": "Password.12"
 }

@@ -28,7 +28,7 @@ app.UseMiddleware<RequestTimeLoggingMiddleware>();
 app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.UseSerilogRequestLogging();
-app.MapGroup("api/identity").MapIdentityApi<User>();
+app.MapGroup("api/identity").WithTags("Identity").MapIdentityApi<User>();
 
 if (app.Environment.IsDevelopment())
 {

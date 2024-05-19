@@ -1,7 +1,7 @@
 ### request 1
 @host = http://localhost
 @port = 5062
-@token = CfDJ8JLO8A5qCt5FqlwROFPzDJPI_zz_GV10nRKLssidux2sy69UWag-PkfnqmYdujNdhWuk64zJTQJnxat-rBN8QKoiZ75e2DYX3rJEY0qF5WKml1WUT498dDguQwqwKPaXOuPUf_MP9ZKLcLQ_q8NOzI7TT5f-m9hWbiM8mPmS_v92NvRzLneWDQd_wVe9Z7V8MQ9Q0_FTIQ2B9VssQv1JEv1si2N1JH1e3sFnDUtaNwJxg47anbfaknl8VgTra5K3yWMJUXpf2OBqFvmr_PbAzVQbj5fCqGn7TSKV6HFDzd7_TAmeb_cSl-7x3AoOaNoecVpOSKEGnqVHmrBq0Phdgm_C5MQzz3xw6r_zN_s4O8x6fFgT_K0T2jiXQlYudeg8knpiEZrCnKkCd64YBGApIU8wuQRVH8bW9FkRFHexoNWWEDonRV9fIt2xWCwV-xR6DD3g9KIvLREPH5-CdvqI-2G4Ck5SBhy22xN7h25huVs-RIhDQUNq71PVRFl3RlUwWUpQkXgkPIZdrTkcnlb-hibb_8fX8hqvgiMIq0ez9UOCqivGe2CJj6L7dedglwq5BKmigSl_nezAakxfQAogApn2r-JKMR3OzaVpZWdZc1bStQ_BveAvVYwr0X6GlOW0W6_BY89vpVNVJIwqdNDp5BtH1jq37Bil1ad5IUnmC89q028N5Ml5eNjdtOvq19mGSA
+@token = CfDJ8JLO8A5qCt5FqlwROFPzDJPpVvHnpGCw5_WFG8ijT1wbZ-Vyie9YRnWYmilEnM71HfpNZzHx7B7uwHla8-zlsd-EQ_cU9MoMLfYGTnLAPkrqmKgI-naPfEhoMYXofoZw9fnnDCHTnSovkVYuIRpfDma2Vo7dgo6DK8oD0pFuZpFHhX6sI1fynqJtjdCDh5JOQm3iL33yD8HeKDDuIpIkoxWziUvv8Gw0uQhQAqM3RP9LYmXG7zzXxncsIf6lDakuVM1j6H0Upph5PNVJlmUXgIlJvIK1xGnTMCR4kNmCcY4CoDvd85SRgA6BEQ4cAFIuTuTzmJ8UI-QgCku2yVNr7IAPqB6trDsZJ8gWmFxF-avfFNEYX86JGY9Ho5iYvwqb0qigViGmRXhi8UyfDER-aV3KNDaCdt3FfB3N18EK79zzKjlHPvfkEf47xHzeWDVqAQ01-Aeb9XtVzAdYXD0MTK343v3m5Dre9DVCHqUBCt8CxTfjj1SfeDmAW4hG68n53HWe58lhpzCmKsbhgnZgDaey_pWhQ0ANOtNFWrJNngQpWd60DBcO9bRys3Rt7PP1EE2JU9gKiFEMC68EI1I-ytSnXZKp0z5VV4KEdrOTHPao_Ftnz_bFrYMcPZcgu48hvQtZD8lRP58QMN8h6S7sag9oEzfoVPi9I4ZpBcfYPiuVqbVbAXbMeGSlniasW3Ejhg
 
 GET {{host}}:{{port}}/api/restaurants
 #Authorization: Bearer {{token}}
@@ -118,4 +118,12 @@ Content-Type: application/json
     "password": "Password.12"
 }
 
-### 
+### update user details (birth, nationality)
+PATCH  {{host}}:{{port}}/api/identity/user
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "dateofbirth": "1990-01-22",
+    "nationality": "Polish"
+}

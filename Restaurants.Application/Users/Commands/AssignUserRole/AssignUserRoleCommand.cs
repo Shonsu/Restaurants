@@ -1,9 +1,9 @@
-using MediatR;
+using Restaurants.Application.Users.Commands.Shared;
 
 namespace Restaurants.Application.Users.Commands.AssignUserRole;
 
-public class AssignUserRoleCommand : IRequest
+public record AssignUserRoleCommand : UserRoleCommand
 {
-    public string UserEmail { get; set; } = default!;
-    public string RoleName { get; set; } = default!;
+    public AssignUserRoleCommand(string UserEmail, string RoleName)
+        : base(UserEmail, RoleName) { }
 }

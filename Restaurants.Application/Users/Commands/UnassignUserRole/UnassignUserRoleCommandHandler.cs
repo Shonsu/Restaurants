@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
+using Restaurants.Application.Users.Commands.Shared;
 using Restaurants.Domain.Entities;
 using Restaurants.Domain.Exceptions;
 
@@ -10,22 +11,11 @@ public class UnassignUserRoleCommandHandler(
     ILogger<UnassignUserRoleCommandHandler> logger,
     UserManager<User> userManager,
     RoleManager<IdentityRole> roleManager
-) : IRequestHandler<UnassignUserRoleCommand>
+) : UserRoleCommandHandlerBase<UnassignUserRoleCommand>(userManager, roleManager)
 {
-    public async Task Handle(UnassignUserRoleCommand request, CancellationToken cancellationToken)
+    protected override async Task ChangeUserRoleAsync(User user, IdentityRole role)
     {
-        logger.LogWarning(
-            "Unassign role {RoleName} from user {UserEmail}",
-            request.RoleName,
-            request.UserEmail
-        );
-        User? user =
-            await userManager.FindByEmailAsync(request.UserEmail)
-            ?? throw new NotFoundException(nameof(User), request.UserEmail);
-        var role =
-            await roleManager.FindByNameAsync(request.RoleName)
-            ?? throw new NotFoundException(nameof(IdentityRole), request.RoleName);
-
+        logger.LogWarning("Unassign role {RoleName} from user {UserEmail}", role.Name, user.Email);
         await userManager.RemoveFromRoleAsync(user, role.Name!);
     }
 }

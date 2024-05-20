@@ -1,9 +1,7 @@
-using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-using Restaurants.Domain.Constans;
+using Restaurants.Application.Users.Commands.Shared;
 using Restaurants.Domain.Entities;
-using Restaurants.Domain.Exceptions;
 
 namespace Restaurants.Application.Users.Commands.AssignUserRole;
 
@@ -11,30 +9,11 @@ public class AssignUserRoleCommandHandler(
     ILogger<AssignUserRoleCommandHandler> logger,
     UserManager<User> userManager,
     RoleManager<IdentityRole> roleManager
-) : IRequestHandler<AssignUserRoleCommand>
+) : UserRoleCommandHandlerBase<AssignUserRoleCommand>(userManager, roleManager)
 {
-    public async Task Handle(AssignUserRoleCommand request, CancellationToken cancellationToken)
+    protected override async Task ChangeUserRoleAsync(User user, IdentityRole role)
     {
-        logger.LogInformation(
-            "Assign {UserRole} role to {UserEmail}",
-            request.RoleName,
-            request.UserEmail
-        );
-
-        User? user =
-            await userManager.FindByEmailAsync(request.UserEmail)
-            ?? throw new NotFoundException(nameof(User), request.UserEmail);
-
-        var role =
-            await roleManager.FindByNameAsync(request.RoleName)
-            ?? throw new NotFoundException(nameof(UserRoles), request.RoleName);
-
-        // bool isRoleExist = await roleManager.RoleExistsAsync(request.RoleName);
-        // if (!isRoleExist)
-        // {
-        //     throw new NotFoundException(nameof(IdentityRole), request.RoleName);
-        // }
-
+        logger.LogInformation("Assign {UserRole} role to {UserEmail}", role.Name, user.Email);
         await userManager.AddToRoleAsync(user, role.Name!);
     }
 }

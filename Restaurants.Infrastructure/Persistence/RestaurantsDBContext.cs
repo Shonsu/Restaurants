@@ -30,6 +30,12 @@ internal class RestaurantsDBContext(DbContextOptions<RestaurantsDBContext> optio
         {
             mb.OwnsOne(r => r.Address);
             mb.HasMany(r => r.Dishes).WithOne().HasForeignKey(d => d.RestaurantId);
+            //mb.HasOne(r => r.Owner).WithMany().HasForeignKey(r => r.OwnerId);
         });
+        modelBuilder
+            .Entity<User>()
+            .HasMany(u => u.OwnedRestaurants)
+            .WithOne(r=>r.Owner)
+            .HasForeignKey(r => r.OwnerId);
     }
 }

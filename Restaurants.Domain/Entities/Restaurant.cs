@@ -2,7 +2,6 @@
 
 public class Restaurant
 {
-
     public int Id { get; set; }
     public string Name { get; set; } = default!;
     public string Description { get; set; } = default!;
@@ -12,5 +11,6 @@ public class Restaurant
     public string? ContactNumber { get; set; }
     public Address? Address { get; set; }
     public List<Dish> Dishes { get; set; } = new();
-
+    public User Owner { get; set; } = default!;
+    public string OwnerId { get; set; } = default!;
 }

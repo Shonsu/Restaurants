@@ -11,7 +11,7 @@ Authorization: Bearer {{testUser}}
 
 ### request 2 - restaurant exist
 GET {{host}}:{{port}}/api/restaurants/1002
-Authorization: Bearer {{token}}
+Authorization: Bearer {{testUser}}
 ###
 
 ### request 3 - restaurant not exist
@@ -124,11 +124,11 @@ Content-Type: application/json
 ### update user details (birth, nationality)
 PATCH  {{host}}:{{port}}/api/identity/user
 Content-Type: application/json
-Authorization: Bearer {{token}}
+Authorization: Bearer {{ownerToken}}
 
 {
-    "dateofbirth": "1990-01-22",
-    "nationality": "Polish"
+    "dateofbirth": "2010-01-22",
+    "nationality": "French"
 }
 
 ### register admin user

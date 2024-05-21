@@ -26,7 +26,7 @@ public class UserContext(IHttpContextAccessor httpContextAccessor) : IUserContex
         var email = user.FindFirst(c => c.Type == ClaimTypes.Email)!.Value;
         var roles = user.Claims.Where(c => c.Type == ClaimTypes.Role)!.Select(c => c.Value);
         string? nationality = user.FindFirst(c => c.Type == "Nationality")?.Value;
-        string? dateOfBirthString = user.FindFirst(c => c.Type == "DateOfBirth")!.Value;
+        string? dateOfBirthString = user.FindFirst(c => c.Type == "DateOfBirth")?.Value;
         var dateOfBirth =
             dateOfBirthString == null
                 ? (DateOnly?)null

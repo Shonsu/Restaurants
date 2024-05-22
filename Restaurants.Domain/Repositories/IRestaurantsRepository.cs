@@ -9,7 +9,9 @@ public interface IRestaurantsRepository
     Task SaveChangesAsync();
     Task<bool> UpdateRestaurantAsync(int id, Object restaurant);
     Task<IEnumerable<Restaurant>> GetAllAsync();
+    Task<IEnumerable<Restaurant>> GetAllMatchingAsync(string? searchPhrase);
     Task<Restaurant?> GetByIdAsync(int restaurantId);
     Task<bool> RestaurantExistAsync(int restaurantId);
     Task<int> CountUserRestaurants(string userId);
+    
 }

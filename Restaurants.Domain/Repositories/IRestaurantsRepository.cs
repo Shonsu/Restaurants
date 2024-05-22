@@ -9,9 +9,12 @@ public interface IRestaurantsRepository
     Task SaveChangesAsync();
     Task<bool> UpdateRestaurantAsync(int id, Object restaurant);
     Task<IEnumerable<Restaurant>> GetAllAsync();
-    Task<IEnumerable<Restaurant>> GetAllMatchingAsync(string? searchPhrase);
+    Task<(IEnumerable<Restaurant>, int)> GetAllMatchingAsync(
+        string? searchPhrase,
+        int pageSize,
+        int pageNumber
+    );
     Task<Restaurant?> GetByIdAsync(int restaurantId);
     Task<bool> RestaurantExistAsync(int restaurantId);
     Task<int> CountUserRestaurants(string userId);
-    
 }

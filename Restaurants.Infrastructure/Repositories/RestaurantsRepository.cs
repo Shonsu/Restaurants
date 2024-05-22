@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
+using Restaurants.Application.Restaurants.Dtos;
+using Restaurants.Domain.Constans;
 using Restaurants.Domain.Entities;
 using Restaurants.Domain.Repositories;
 
@@ -32,7 +35,9 @@ internal class RestaurantsRepository(RestaurantsDBContext dbContext) : IRestaura
     public async Task<(IEnumerable<Restaurant>, int)> GetAllMatchingAsync(
         string? searchPhrase,
         int pageSize,
-        int pageNumber
+        int pageNumber,
+        string? sortBy,
+        SortDirection sortDirection
     )
     {
         var searchPhraseLower = searchPhrase?.ToLower();
@@ -42,12 +47,24 @@ internal class RestaurantsRepository(RestaurantsDBContext dbContext) : IRestaura
             || r.Description.ToLower().Contains(searchPhraseLower)
         );
         var totalCount = await baseQuery.CountAsync();
-        var restaurants = await dbContext
-            .Restaurants.Where(r =>
-                searchPhraseLower == null
-                || r.Name.ToLower().Contains(searchPhraseLower)
-                || r.Description.ToLower().Contains(searchPhraseLower)
-            )
+
+        if (sortBy is not null)
+        {
+            var columnSelector = new Dictionary<string, Expression<Func<Restaurant, object>>>
+            {
+                { nameof(RestaurantDto.Name), restaurant => restaurant.Name },
+                { nameof(RestaurantDto.Description), restaurant => restaurant.Description },
+                { nameof(RestaurantDto.Category), restaurant => restaurant.Category }
+            };
+
+            baseQuery = sortDirection switch
+            {
+                SortDirection.Ascending => baseQuery.OrderBy(columnSelector[sortBy]),
+                SortDirection.Descending or _ => baseQuery.OrderByDescending(columnSelector[sortBy])
+                // _ => throw new NotImplementedException(),
+            };
+        }
+        var restaurants = await baseQuery
             .Skip(pageSize * (pageNumber - 1))
             .Take(pageSize)
             .ToListAsync();

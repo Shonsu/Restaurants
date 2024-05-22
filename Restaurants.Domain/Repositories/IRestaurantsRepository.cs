@@ -1,4 +1,5 @@
-﻿using Restaurants.Domain.Entities;
+﻿using Restaurants.Domain.Constans;
+using Restaurants.Domain.Entities;
 
 namespace Restaurants.Domain.Repositories;
 
@@ -12,7 +13,9 @@ public interface IRestaurantsRepository
     Task<(IEnumerable<Restaurant>, int)> GetAllMatchingAsync(
         string? searchPhrase,
         int pageSize,
-        int pageNumber
+        int pageNumber,
+        string? sortBy,
+        SortDirection sortDirection
     );
     Task<Restaurant?> GetByIdAsync(int restaurantId);
     Task<bool> RestaurantExistAsync(int restaurantId);

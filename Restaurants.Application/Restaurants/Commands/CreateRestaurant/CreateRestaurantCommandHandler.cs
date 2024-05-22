@@ -22,7 +22,7 @@ public class CreateRestaurantCommandHandler(
         var currentUser = userContext.GetCurrentUser();
 
         var restaurant = mapper.Map<Restaurant>(request);
-        restaurant.OwnerId = currentUser.Id;
+        restaurant.OwnerId = currentUser!.Id;
         int id = await _restaurantsRepository.CreateRestaurantAsync(restaurant);
         logger.LogInformation(
             "{UserEmail} [{UserId}] is creating a new restaurant {@Restaurant}.",

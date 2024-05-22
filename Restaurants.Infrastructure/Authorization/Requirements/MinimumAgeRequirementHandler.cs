@@ -15,7 +15,7 @@ public class MinimumAgeRequirementHandler(
         MinimumAgeRequirement requirement
     )
     {
-        var currentUser = userContext.GetCurrentUser();
+        var currentUser = userContext.GetCurrentUser()!;
         // var dob = context.User.Claims.FirstOrDefault(c=>c.Type == ClaimTypes.DateOfBirth);
         logger.LogInformation(
             "User: {Email}, date of birth {DoB} - Handling MinimumAgeRequirement",

@@ -6,6 +6,11 @@ namespace Restaurants.Infrastructure;
 
 internal class RestaurantsRepository(RestaurantsDBContext dbContext) : IRestaurantsRepository
 {
+    public async Task<int> CountUserRestaurants(string userId)
+    {
+        return await dbContext.Restaurants.Where(r => r.OwnerId == userId).CountAsync();
+    }
+
     public async Task<int> CreateRestaurantAsync(Restaurant restaurant)
     {
         await dbContext.Restaurants.AddAsync(restaurant);
@@ -27,7 +32,7 @@ internal class RestaurantsRepository(RestaurantsDBContext dbContext) : IRestaura
     public async Task<Restaurant?> GetByIdAsync(int restaurantId)
     {
         return await dbContext
-            .Restaurants//.AsNoTracking()
+            .Restaurants //.AsNoTracking()
             .Include(r => r.Dishes)
             .FirstOrDefaultAsync(r => r.Id == restaurantId);
     }

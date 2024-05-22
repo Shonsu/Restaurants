@@ -15,7 +15,7 @@ public class RestaurantAuthorizationService(
 {
     public bool Authorize(Restaurant restaurant, ResourceOperations resourceOperations)
     {
-        var user = userContext.GetCurrentUser();
+        var user = userContext.GetCurrentUser()!;
         logger.LogInformation(
             "Authorizing user {UserEmail}, to {Operation} for restaurant {RestaurantName}",
             user.Email,

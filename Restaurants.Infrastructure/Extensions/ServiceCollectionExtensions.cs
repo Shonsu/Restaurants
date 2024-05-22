@@ -41,9 +41,14 @@ public static class ServiceCollectionExtensions
             .AddPolicy(
                 PolicyNames.AtLeast20,
                 builder => builder.AddRequirements(new MinimumAgeRequirement(20))
+            )
+            .AddPolicy(
+                PolicyNames.OwnerAtLeast2restaurant,
+                builder => builder.AddRequirements(new MinimumRestaurantOwnRequirement(2))
             );
 
         services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementHandler>();
+        services.AddScoped<IAuthorizationHandler, MinimumRestaurantOwnRequirementHandler>();
         services.AddScoped<IRestaurantAuthorizationService, RestaurantAuthorizationService>();
     }
 }

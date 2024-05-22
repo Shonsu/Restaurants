@@ -11,4 +11,5 @@ public interface IRestaurantsRepository
     Task<IEnumerable<Restaurant>> GetAllAsync();
     Task<Restaurant?> GetByIdAsync(int restaurantId);
     Task<bool> RestaurantExistAsync(int restaurantId);
+    Task<int> CountUserRestaurants(string userId);
 }

@@ -2,7 +2,6 @@
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Moq;
-using Restaurants.Application.Users;
 using Restaurants.Domain.Constans;
 
 namespace Restaurants.Application.Users.Tests;

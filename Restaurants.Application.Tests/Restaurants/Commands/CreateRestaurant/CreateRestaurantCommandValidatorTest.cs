@@ -1,4 +1,3 @@
-using FluentAssertions;
 using FluentValidation.TestHelper;
 
 namespace Restaurants.Application.Restaurants.Commands.CreateRestaurant.Tests;

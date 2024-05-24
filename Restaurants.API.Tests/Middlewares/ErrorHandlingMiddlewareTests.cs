@@ -1,12 +1,11 @@
-using Castle.Core.Logging;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Moq;
-using Restaurants.API.Middlewares;
+using Restaurants.Domain.Entities;
 using Restaurants.Domain.Exceptions;
 
-namespace Restaurant.API.Middlewares.Tests;
+namespace Restaurants.API.Middlewares.Tests;
 
 public class ErrorHandlingMiddlewareTests
 {

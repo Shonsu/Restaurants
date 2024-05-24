@@ -24,12 +24,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Restaurants.API\Restaurants.API.csproj" />
+    <Folder Include="Controllers/" />
+    <Folder Include="Middlewares/" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers/" />
-    <Folder Include="Middlewares/" />
+    <ProjectReference Include="..\..\src\Restaurants.API\Restaurants.API.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,7 +5,7 @@ using Restaurants.Domain.Repositories;
 
 namespace Restaurants.Infrastructure.Authorization.Requirements;
 
-public class MinimumRestaurantOwnRequirementHandler(
+internal class MinimumRestaurantOwnRequirementHandler(
     ILogger<MinimumRestaurantOwnRequirementHandler> logger,
     IUserContext userContext,
     IRestaurantsRepository restaurantsRepository
@@ -33,6 +33,5 @@ public class MinimumRestaurantOwnRequirementHandler(
             logger.LogInformation("Authorization failed");
             context.Fail();
         }
-      //  return;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,7 +10,9 @@ using Restaurants.Domain.Repositories;
 using Restaurants.Infrastructure.Authorization;
 using Restaurants.Infrastructure.Authorization.Requirements;
 using Restaurants.Infrastructure.Authorization.Services;
+using Restaurants.Infrastructure.Configuration;
 using Restaurants.Infrastructure.Seeders;
+using Restaurants.Infrastructure.Storage;
 
 namespace Restaurants.Infrastructure.Extensions;
 
@@ -20,9 +23,11 @@ public static class ServiceCollectionExtensions
         IConfiguration configuration
     )
     {
-        var connectionString = configuration.GetConnectionString("RestaurantDb");
+        SqlConnectionStringBuilder conStrBuilder = new SqlConnectionStringBuilder(configuration.GetConnectionString("RestaurantDb"));
+        conStrBuilder.Password = configuration["DbPassword"];
+        //var connectionString = configuration.GetConnectionString("RestaurantDb");
         services.AddDbContext<RestaurantsDBContext>(options =>
-            options.UseSqlServer(connectionString).EnableSensitiveDataLogging()
+            options.UseSqlServer(conStrBuilder.ConnectionString).EnableSensitiveDataLogging()
         );
         services
             .AddIdentityApiEndpoints<User>()
@@ -50,5 +55,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementHandler>();
         services.AddScoped<IAuthorizationHandler, MinimumRestaurantOwnRequirementHandler>();
         services.AddScoped<IRestaurantAuthorizationService, RestaurantAuthorizationService>();
+        services.AddScoped<IBlobStorageService, BlobStorageService>();
+        services.Configure<BlobStorageSettings>(configuration.GetSection("BlobStorage"));
     }
 }

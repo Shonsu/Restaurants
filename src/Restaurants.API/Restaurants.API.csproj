@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
@@ -19,6 +19,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <!-- <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>   -->
+    <UserSecretsId>656a239e-c2b1-4afe-b276-9215bc2709bf</UserSecretsId>
   </PropertyGroup>
 
 </Project>

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Runtime.InteropServices;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +26,10 @@ public static class ServiceCollectionExtensions
     )
     {
         SqlConnectionStringBuilder conStrBuilder = new SqlConnectionStringBuilder(configuration.GetConnectionString("RestaurantDb"));
-        conStrBuilder.Password = configuration["DbPassword"];
+        if (conStrBuilder["Server"].ToString()!.Contains("locahost"))
+        {
+            conStrBuilder.Password = configuration["DbPassword"];
+        }
         //var connectionString = configuration.GetConnectionString("RestaurantDb");
         services.AddDbContext<RestaurantsDBContext>(options =>
             options.UseSqlServer(conStrBuilder.ConnectionString).EnableSensitiveDataLogging()

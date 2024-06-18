@@ -26,7 +26,7 @@ public static class ServiceCollectionExtensions
     )
     {
         SqlConnectionStringBuilder conStrBuilder = new SqlConnectionStringBuilder(configuration.GetConnectionString("RestaurantDb"));
-        if (conStrBuilder["Server"].ToString()!.Contains("locahost"))
+        if (conStrBuilder["Server"].ToString()!.Contains("localhost"))
         {
             conStrBuilder.Password = configuration["DbPassword"];
         }
